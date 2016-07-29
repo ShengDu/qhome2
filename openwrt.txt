@@ -1,0 +1,20 @@
+1、#set kernel addr
+set bootcmd bootm 0x9f060000
+
+2. #config serverip ipaddr
+set serverip x.x.x.x
+set ipaddr x.x.x.x
+set crc 1
+save
+
+3. #startup tftp services
+
+4. #download bin files to flash
+tftp 0x80060000 xxx.bin
+
+5. #copy to flash
+erase 0x9f060000 +0xf10000
+cp.b 0x80060000 0x9f060000 0xf10000
+
+6. #reboot
+reset
